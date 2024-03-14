@@ -27,7 +27,7 @@ export default function RootLayout({
         />
         <meta
           property={`og:description`}
-          content={`Nchiini is a web app designed to assist people in learning about their culture in an engaging and interactive manner. The app offers a user-friendly interface and a personalized learning experience to help users explore and understand different aspects of their culture.`}
+          content={`Nchiini is a web app designed to assist people in learning about their culture in an engaging and interactive manner. The app offers a user-friendly interface and a personalized learning experience to help users explore and understand different aspects of their culture`}
         />
         <meta property="og:type" content="nchiini" />
         <meta property="og:image" content={`https://firebasestorage.googleapis.com/v0/b/nchiini.appspot.com/o/unnamed.jpg?alt=media&token=54f63699-2128-4ff5-833d-ea08014544b4`} />
