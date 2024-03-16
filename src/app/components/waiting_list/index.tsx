@@ -135,6 +135,7 @@ const WaitingList = () => {
           Submit
         </button>
       </div>
+      <div className="text-[10px] text-white/30">By entering you phone number you&apos;re accepting to receive notifications from us</div>
       {showError == 1 && (
         <div className="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-md h-screen flex items-center justify-center">
           <div className="flex flex-col gap-5 items-center bg-black/60 backdrop-blur-md p-12 rounded-xl justify-center">
