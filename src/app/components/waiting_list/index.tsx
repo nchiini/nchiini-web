@@ -16,6 +16,7 @@ const WaitingList = () => {
   const [value, setValue] = useState<E164Number | undefined>(undefined);
   const [valid, setValid] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [peopleSubscribed, setPeopleSubscribed] = useState<any[]>([]);
   const [phoneNumber, setPhoneNumber] = useState<any[]>([]);
   const [showError, setShowError] = useState(0);
   const citiesRef = collection(db, "subscribers");
@@ -35,6 +36,20 @@ const WaitingList = () => {
       return 0;
     });
   }
+  async function getSubscribers() {
+    // setLoading(true);
+    const q = query(citiesRef);
+    const querySnapshot = await getDocs(q);
+    let temp: any = [];
+    querySnapshot.forEach((doc) => {
+      temp.push(doc.data());
+    });
+    setPeopleSubscribed(temp);
+    // setLoading(false);
+  }
+  useEffect(() => {
+    getSubscribers();
+  }, []);
   const CameroonTellCodeReg = /\+237/;
   useEffect(() => {
     if (phoneNumber?.length > 0) {
@@ -85,7 +100,10 @@ const WaitingList = () => {
       <div className="flex items-center justify-between">
         {" "}
         We&apos;ll notify you when we launch
-        <span className="text-white/30 text-[10px]">76 people subscribed</span>
+        <span className="text-white/30 text-[10px]">
+          {peopleSubscribed.length}{" "}
+          {peopleSubscribed.length > 1 ? "people" : "person"} subscribed
+        </span>
       </div>
       <div className="flex gap-4 w-full">
         <div className="flex w-full border border-white/20 rounded-xl">
