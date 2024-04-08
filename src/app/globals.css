@@ -33,9 +33,12 @@ body {
 }
 @layer components{
   .input-validated {
-    @apply h-[56px] w-full rounded-md bg-transparent border-none hover:border-none  px-[16px] py-[8px] text-white sm:w-[330px];
+    @apply h-12 w-full rounded-xl bg-transparent border p-3 text-white sm:w-[330px];
   }
   .input-validated > * {
-    @apply  bg-transparent outline-none text-white hover:border-none;
+    @apply  bg-transparent placeholder:text-white/10 outline-none text-white;
+  }
+  input {
+    @apply bg-transparent outline-none;
   }
 }

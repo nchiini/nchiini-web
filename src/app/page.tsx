@@ -1,6 +1,7 @@
-"use client"
+"use client";
 import Image from "next/image";
 import WaitingList from "./components/waiting_list";
+import Head from "next/head";
 
 export default function Home() {
   return (
