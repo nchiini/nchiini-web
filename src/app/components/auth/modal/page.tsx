@@ -1,10 +1,6 @@
-"use client";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Dispatch, SetStateAction } from "react";
-interface ModalTypes {
-  setShowModal: Dispatch<SetStateAction<boolean>>;
-}
+import { ModalTypes } from "./interface";
+
 const Modal = ({ setShowModal }: ModalTypes) => {
   const router = useRouter();
   return (
