@@ -1,6 +1,5 @@
-import Link from "next/link";
+"use client";
 import NormalButton from "../../button/NormalButton";
-import NormalInput from "../../input/NormaInput";
 import { Dispatch, SetStateAction, useState } from "react";
 
 const Profile = () => {

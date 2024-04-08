@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
+"use client";
 import Link from "next/link";
 import NormalButton from "../../button/NormalButton";
 import NormalInput from "../../input/NormaInput";

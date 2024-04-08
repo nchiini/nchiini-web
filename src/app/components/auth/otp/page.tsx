@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
+"use client";
 import Link from "next/link";
 import NormalInput from "../../input/NormaInput";
 import { useState } from "react";
