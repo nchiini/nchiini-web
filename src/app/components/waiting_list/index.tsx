@@ -83,7 +83,7 @@ const WaitingList = () => {
   }, [value]);
   return (
     <div className="max-w-[500px] w-full mx-auto h-full justify-center gap-4 flex flex-col">
-      <div className="text-center font-bold text-5xl border-b border-b-white/10 pb-3">
+      <div className="text-center font-bold text-primary-main text-5xl border-b border-b-primary-main/20 pb-3">
         Nchiini
       </div>
       <img
@@ -130,12 +130,12 @@ const WaitingList = () => {
             } else {
             }
           }}
-          className="bg-white/10 p-4 px-8 rounded-xl hover:bg-white/20 duration-150"
+          className="bg-primary-main p-4 px-8 rounded-xl hover:bg-primary-main/90 duration-150"
         >
           Submit
         </button>
       </div>
-      <div className="text-[10px] text-white/30">By entering you phone number you&apos;re accepting to receive notifications from us</div>
+      <div className="text-[10px] text-primary-main/30">By entering you phone number you&apos;re accepting to receive notifications from us.</div>
       {showError == 1 && (
         <div className="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-md h-screen flex items-center justify-center">
           <div className="flex flex-col gap-5 items-center bg-black/60 backdrop-blur-md p-12 rounded-xl justify-center">

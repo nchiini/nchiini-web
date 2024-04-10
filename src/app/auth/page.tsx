@@ -12,7 +12,7 @@ import NormalInput from "../components/input/NormaInput";
 
 /* eslint-disable @next/next/no-img-element */
 const AuthPAge = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const screen = useSearchParams().get("q");
   return (
     <div className="w-full min-h-screen top-0 left-0 p-5 flex items-center justify-center">

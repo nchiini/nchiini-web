@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-const Modal = ({ setShowModal }:{setShowModal:(e:boolean)=>void} ) => {
+const Modal = ({ setShowModal }:{setShowModal:any} ) => {
   const router = useRouter();
   return (
     <div className="absolute top-0 left-0 w-full p-5 h-screen flex backdrop-blur-md z-30 items-center justify-center">
