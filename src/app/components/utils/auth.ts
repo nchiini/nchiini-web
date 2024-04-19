@@ -32,7 +32,7 @@ import {
   };
   
 
-  export const verifyOTP = async (code:string, onSuccess?:()=>void) => {
+  export const verifyOTP = async (code:string, onSuccess?:()=>void,onError?:()=>void) => {
     const confirmationResult = window.confirmationResult;
     await confirmationResult
       ?.confirm(code)
@@ -45,7 +45,8 @@ import {
         // is profile complete?
       })
       .catch((error:any) =>{
-        throw new Error(error);
+        onError?onError():undefined
+        return error
         }
       );
   };

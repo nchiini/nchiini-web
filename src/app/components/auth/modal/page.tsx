@@ -1,8 +1,13 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { ModalTypes } from "./interface";
 
-const Modal = ({ onClick }:any ) => {
+const Modal = ({
+  onClick,
+  icon,
+  title = "Success message",
+  buttonText = "Set up your profile",
+  message = "Your account has been created successfully, we are happy to have as a member of Nchini. We hope you learn and explore the cultures you want to.",
+}: any) => {
   const router = useRouter();
   return (
     <div className="absolute top-0 left-0 w-full p-5 h-screen flex backdrop-blur-md z-30 items-center justify-center">
@@ -25,32 +30,31 @@ const Modal = ({ onClick }:any ) => {
           </svg>
         </div>
         <div className="flex flex-col items-center w-full gap-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-9 text-primary-main h-9"
-          >
-            <path
-              fillRule="evenodd"
-              d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-              clipRule="evenodd"
-            />
-          </svg>
-          <div className="text-2xl">Success message</div>
-          <div className="text-center text-white/40">
-            Your account has been created successfully, we are happy to have as
-            a member of Nchini. We hope you learn and explore the cultures you
-            want to.
-          </div>
+          {icon ? (
+            icon
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-9 text-primary-main h-9"
+            >
+              <path
+                fillRule="evenodd"
+                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          )}
+          <div className="text-2xl">{title}</div>
+          <div className="text-center text-white/40">{message}</div>
           <button
             onClick={() => {
-              router.push("/auth?q=profile");
-              onClick()
+              onClick();
             }}
             className="rounded-full bg-primary-main p-3 text-sm text-black w-full"
           >
-            Set up your profile
+            {buttonText}
           </button>
         </div>
       </div>

@@ -5,13 +5,14 @@ import Link from "next/link";
 import NormalInput from "../../input/NormaInput";
 import NormalButton from "../../button/NormalButton";
 import { useState } from "react";
-import router from "next/router";
+import { useRouter } from "next/navigation";
 import { generateRecaptcha, SignUpUser } from "../../utils/auth";
 
 const SignIn = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneNumberIsValid, setPhoneNumberIsValid] = useState(false);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const requestOTP = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setLoading(true);
@@ -19,8 +20,8 @@ const SignIn = () => {
     SignUpUser(phoneNumber)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
-        router.push("/auth?q=otp");
         setLoading(false);
+        router.push("/auth?q=otp");
       })
       .catch((error) => error);
   };
