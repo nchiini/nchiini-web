@@ -15,7 +15,6 @@ const ProjectTitle = ({
 }) => {
   return (
     <Text
-      color="primary"
       className={`${
         uppercase ? "uppercase" : "capitalize"
       }  !mb-2 ${className}`}

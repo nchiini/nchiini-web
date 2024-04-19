@@ -1,11 +1,8 @@
 "use client";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Dispatch, SetStateAction } from "react";
-interface ModalTypes {
-  setShowModal: Dispatch<SetStateAction<boolean>>;
-}
-const Modal = ({ setShowModal }: ModalTypes) => {
+import { ModalTypes } from "./interface";
+
+const Modal = ({ onClick }:any ) => {
   const router = useRouter();
   return (
     <div className="absolute top-0 left-0 w-full p-5 h-screen flex backdrop-blur-md z-30 items-center justify-center">
@@ -49,7 +46,7 @@ const Modal = ({ setShowModal }: ModalTypes) => {
           <button
             onClick={() => {
               router.push("/auth?q=profile");
-              setShowModal(false);
+              onClick()
             }}
             className="rounded-full bg-primary-main p-3 text-sm text-black w-full"
           >

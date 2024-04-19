@@ -12,7 +12,7 @@ import NormalInput from "../components/input/NormaInput";
 
 /* eslint-disable @next/next/no-img-element */
 const AuthPAge = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const screen = useSearchParams().get("q");
   return (
     <div className="w-full min-h-screen top-0 left-0 p-5 flex items-center justify-center">
@@ -83,10 +83,22 @@ const AuthPAge = () => {
         )}
         {screen == "sign-up" && <SignUp />}
         {screen == "sign-in" && <SignIn />}
-        {screen == "otp" && <Otp setShowModal={setShowModal} />}
+        {screen == "otp" && (
+          <Otp
+            onVerified={() => {
+              setShowModal(true);
+            }}
+          />
+        )}
         {screen == "profile" && <Profile />}
       </div>
-      {showModal && <Modal setShowModal={setShowModal} />}
+      {showModal && (
+        <Modal
+          onClick={() => {
+            setShowModal(false);
+          }}
+        />
+      )}
     </div>
   );
 };
