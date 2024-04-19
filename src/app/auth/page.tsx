@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/alt-text */
 "use client";
 import { useState } from "react";
-import Modal from "../components/auth/modal/page";
-import SignUp from "../components/auth/sign_up/page";
+import Modal from "../../components/auth/modal/page";
+import SignUp from "../../components/auth/sign_up/page";
 import { useRouter, useSearchParams } from "next/navigation";
-import SignIn from "../components/auth/sign_in/page";
-import Otp from "../components/auth/otp/page";
-import Profile from "../components/auth/profile/page";
-import NormalButton from "../components/button/NormalButton";
-import NormalInput from "../components/input/NormaInput";
+import SignIn from "../../components/auth/sign_in/page";
+import Otp from "../../components/auth/otp/page";
+import Profile from "../../components/auth/profile/page";
+import NormalButton from "../../components/button/NormalButton";
+import NormalInput from "../../components/input/NormaInput";
 
 /* eslint-disable @next/next/no-img-element */
 const AuthPAge = () => {
