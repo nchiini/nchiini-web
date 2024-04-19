@@ -11,7 +11,7 @@ import {
   setDoc,
   where,
 } from "firebase/firestore";
-import { db } from "../../../../firebase_config";
+import { db } from "../../../firebase_config";
 const WaitingList = () => {
   const [value, setValue] = useState<E164Number | undefined>(undefined);
   const [valid, setValid] = useState(false);
