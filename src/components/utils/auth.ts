@@ -3,7 +3,7 @@ import {
     RecaptchaVerifier,
     signInWithPhoneNumber,
   } from "firebase/auth";
-  import { authentication } from "../../../../firebase_config";
+  import { authentication } from "../../../firebase_config";
   
   /**generate auth RecaptchaVerifier */
   export const generateRecaptcha = () => {
