@@ -8,7 +8,7 @@ import NormalButton from "../../button/NormalButton";
 import { verifyOTP } from "../../utils/auth";
 import { OTPTypes } from "./interface";
 
-const Otp = ({ onVerified }: any) => {
+const Otp = ({ onVerified,onError }: any) => {
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
   return (
@@ -37,6 +37,8 @@ const Otp = ({ onVerified }: any) => {
               setLoading(true);
               verifyOTP(code, () => {
                 onVerified();
+              },()=>{
+                onError()
               });
             }}
             icon={

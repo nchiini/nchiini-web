@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Modal from "../components/auth/modal/page";
 import SignUp from "../components/auth/sign_up/page";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import SignIn from "../components/auth/sign_in/page";
 import Otp from "../components/auth/otp/page";
 import Profile from "../components/auth/profile/page";
@@ -13,7 +13,9 @@ import NormalInput from "../components/input/NormaInput";
 /* eslint-disable @next/next/no-img-element */
 const AuthPAge = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [showErrorModal, setShowErrorModal] = useState<boolean>(false);
   const screen = useSearchParams().get("q");
+  const router = useRouter();
   return (
     <div className="w-full min-h-screen top-0 left-0 p-5 flex items-center justify-center">
       <div className="grid max-w-[400px] lg:grid-cols-2 pb-5 w-full min-h-[525px] gap-5 lg:max-w-[900px]">
@@ -88,6 +90,9 @@ const AuthPAge = () => {
             onVerified={() => {
               setShowModal(true);
             }}
+            onError={() => {
+              setShowErrorModal(true);
+            }}
           />
         )}
         {screen == "profile" && <Profile />}
@@ -96,6 +101,20 @@ const AuthPAge = () => {
         <Modal
           onClick={() => {
             setShowModal(false);
+            router.push("/auth?q=profile");
+          }}
+        />
+      )}
+      {showErrorModal && (
+        <Modal
+          title={"An Error occurred"}
+          buttonText={"Try again"}
+          message={
+            "Please ensure that you entered the correct OTP and that you have good internet connection and try again."
+          }
+          onClick={() => {
+            setShowErrorModal(false);
+            router.back();
           }}
         />
       )}
