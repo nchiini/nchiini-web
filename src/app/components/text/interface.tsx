@@ -1,9 +1,5 @@
-import { IColor } from "configs";
-
 export interface ITextProps {
   text: string;
-  bgColor?: IColor;
-  color?: IColor;
   variant?:
     | "large"
     | "xLarge"
@@ -21,8 +17,4 @@ export interface ITextProps {
   type?: "normal" | "link" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   onClick?: (arg?: any) => any;
   children?: any;
-  gradientColors?: {
-    from: IColor;
-    to: IColor;
-  };
 }

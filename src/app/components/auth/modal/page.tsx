@@ -1,7 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { ModalTypes } from "./interface";
 
-const Modal = ({ setShowModal }:{setShowModal:any} ) => {
+const Modal = ({ onClick }:any ) => {
   const router = useRouter();
   return (
     <div className="absolute top-0 left-0 w-full p-5 h-screen flex backdrop-blur-md z-30 items-center justify-center">
@@ -45,7 +46,7 @@ const Modal = ({ setShowModal }:{setShowModal:any} ) => {
           <button
             onClick={() => {
               router.push("/auth?q=profile");
-              setShowModal(false);
+              onClick()
             }}
             className="rounded-full bg-primary-main p-3 text-sm text-black w-full"
           >

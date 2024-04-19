@@ -83,10 +83,22 @@ const AuthPAge = () => {
         )}
         {screen == "sign-up" && <SignUp />}
         {screen == "sign-in" && <SignIn />}
-        {screen == "otp" && <Otp setShowModal={setShowModal} />}
+        {screen == "otp" && (
+          <Otp
+            onVerified={() => {
+              setShowModal(true);
+            }}
+          />
+        )}
         {screen == "profile" && <Profile />}
       </div>
-      {showModal && <Modal setShowModal={setShowModal} />}
+      {showModal && (
+        <Modal
+          onClick={() => {
+            setShowModal(false);
+          }}
+        />
+      )}
     </div>
   );
 };

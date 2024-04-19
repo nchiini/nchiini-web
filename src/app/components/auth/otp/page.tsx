@@ -8,7 +8,7 @@ import NormalButton from "../../button/NormalButton";
 import { verifyOTP } from "../../utils/auth";
 import { OTPTypes } from "./interface";
 
-const Otp = ({ setShowModal }: OTPTypes) => {
+const Otp = ({ onVerified }: any) => {
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
   return (
@@ -36,7 +36,7 @@ const Otp = ({ setShowModal }: OTPTypes) => {
             onClick={() => {
               setLoading(true);
               verifyOTP(code, () => {
-                setShowModal(true);
+                onVerified();
               });
             }}
             icon={
