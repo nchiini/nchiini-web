@@ -4,6 +4,7 @@ import "./globals.css";
 import Head from "next/head";
 import { Suspense } from "react";
 import NavBar from "../components/navbar/page";
+import Footer from "@/components/footer/page";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default function RootLayout({
         <Suspense>
           <NavBar />
           {children}
+          <Footer />
         </Suspense>
       </body>
     </html>
