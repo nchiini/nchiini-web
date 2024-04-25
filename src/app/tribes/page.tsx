@@ -9,7 +9,13 @@ const Tribes = () => {
       </div>
       <div className="grid py-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {tribes.map((elem: any, index: any) => (
-          <Card description={elem.tribeDescription} key={index} imageUrl={elem.imageUrl} title={elem.tribeName} />
+          <Card
+            id={index}
+            description={elem.tribeDescription}
+            key={index}
+            imageUrl={elem.imageUrl}
+            title={elem.tribeName}
+          />
         ))}
       </div>
     </div>

@@ -16,9 +16,9 @@ const NavBar = () => {
   ) : (
     <div className="w-full fixed bg-black top-0 left-0">
       <div className="gap-4 p-4 flex max-w-[1300px] w-full justify-between items-center mx-auto">
-        <div className="text-primary-main text-lg md:text-2xl lg:text-4xl font-[700]">
+        <Link href={"/tribes"} className="text-primary-main text-lg md:text-2xl lg:text-4xl font-[700]">
           Nchiini
-        </div>
+        </Link>
         <div className="relative max-w-[250px] md:max-w-[300px] lg:max-w-[400px] z-20 w-full">
           <div className="flex items-center z-20 w-full gap-3 relative max-w-[250px] md:max-w-[300px] lg:max-w-[400px] border-primary-main rounded-xl">
             <svg
@@ -46,7 +46,7 @@ const NavBar = () => {
             />
           </div>
           {searchString && (
-            <div className="w-full absolute z-20 bg-white/5 border border-t-0 rounded-b-xl border-primary-main backdrop-blur-lg overflow-scroll h-[260px] top-[40px]">
+            <div className="w-full absolute z-20 bg-grey-1/60 border border-t-0 rounded-b-xl border-primary-main backdrop-blur-lg overflow-scroll h-[260px] top-[40px]">
               <div className="p-3 cursor-pointer hover:bg-white/5">Oku</div>
               <div className="p-3 cursor-pointer hover:bg-white/5">Nkambe</div>
               <div className="p-3 cursor-pointer hover:bg-white/5">Ndu</div>
