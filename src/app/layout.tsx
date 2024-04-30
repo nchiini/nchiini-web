@@ -5,6 +5,7 @@ import Head from "next/head";
 import { Suspense } from "react";
 import NavBar from "../components/navbar/page";
 import Footer from "@/components/footer/page";
+import { useRouter } from "next/router";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

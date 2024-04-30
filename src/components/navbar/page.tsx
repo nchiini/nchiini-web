@@ -11,7 +11,7 @@ const NavBar = () => {
     setPath(url);
   }, []);
   const menuItems = ["Home", "Contact Us", "About Us", "Profile"];
-  return path?.includes("/auth") ? (
+  return path?.includes("/auth") || path?.includes("/dashboard") ? (
     <></>
   ) : (
     <div className="w-full fixed bg-black top-0 left-0">

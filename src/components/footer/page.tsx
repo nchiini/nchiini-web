@@ -1,5 +1,15 @@
+"use client";
+import { useState, useEffect } from "react";
+
 const Footer = () => {
-  return (
+  const [path, setPath] = useState<string>();
+  useEffect(() => {
+    var url = window.location.pathname;
+    setPath(url);
+  }, []);
+  return path?.includes("/auth") || path?.includes("/dashboard") ? (
+    <></>
+  ) : (
     <div className="w-full text-white/50">
       <div className="max-w-[1300px] w-full gap-4 flex-wrap flex justify-between">
         <div className="flex flex-col gap-3">
@@ -27,7 +37,9 @@ const Footer = () => {
           <div>+237670000000</div>
         </div>
       </div>
-      <div className="w-full text-center pt-4 text-white/30">&copy;copyright 2024 . Powered by Nchiini</div>
+      <div className="w-full text-center pt-4 text-white/30">
+        &copy;copyright 2024 . Powered by Nchiini
+      </div>
     </div>
   );
 };
