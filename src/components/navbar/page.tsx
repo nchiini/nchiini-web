@@ -20,7 +20,7 @@ const NavBar = () => {
           Nchiini
         </Link>
         <div className="relative max-w-[250px] md:max-w-[300px] lg:max-w-[400px] z-20 w-full">
-          <div className="flex items-center z-20 w-full gap-3 relative max-w-[250px] md:max-w-[300px] lg:max-w-[400px] border-primary-main rounded-xl">
+          <div className="flex items-center z-20 w-full gap-3 relative max-w-[250px] md:max-w-[300px] lg:max-w-[400px] rounded-xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -46,7 +46,7 @@ const NavBar = () => {
             />
           </div>
           {searchString && (
-            <div className="w-full absolute z-20 bg-grey-1/60 border border-t-0 rounded-b-xl border-primary-main backdrop-blur-lg overflow-scroll h-[260px] top-[40px]">
+            <div className="w-full absolute z-20 bg-grey-1/60 border border-t-0 rounded-b-xl border-primary-main/20 backdrop-blur-lg overflow-scroll h-[260px] top-[40px]">
               <div className="p-3 cursor-pointer hover:bg-white/5">Oku</div>
               <div className="p-3 cursor-pointer hover:bg-white/5">Nkambe</div>
               <div className="p-3 cursor-pointer hover:bg-white/5">Ndu</div>
@@ -55,8 +55,8 @@ const NavBar = () => {
           <div
             className={
               searchString
-                ? `absolute border rounded-xl border-primary-main z-10 p-2 top-0 left-0 w-full h-[300px]`
-                : `absolute border rounded-xl border-primary-main z-10 p-2 top-0 left-0 w-full h-full`
+                ? `absolute border rounded-xl border-primary-main/30 z-10 p-2 top-0 left-0 w-full h-[300px]`
+                : `absolute border rounded-xl border-primary-main/30 z-10 p-2 top-0 left-0 w-full h-full`
             }
           ></div>
         </div>
