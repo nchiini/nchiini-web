@@ -6,17 +6,26 @@ const NavBar = () => {
   const [path, setPath] = useState<string>();
   const [searchString, setSearchString] = useState<string>();
   const [mobileMenu, setMobileMenu] = useState<boolean>(false);
+  const [menuItem, setMenuItem] = useState<boolean>(false);
   useEffect(() => {
     var url = window.location.pathname;
     setPath(url);
   }, []);
-  const menuItems = ["Home", "Contact Us", "About Us", "Profile"];
+  const menuItems = ["Home", "Contact Us", "About Us"];
   return path?.includes("/auth") || path?.includes("/dashboard") ? (
     <></>
   ) : (
-    <div className="w-full fixed bg-black top-0 left-0">
-      <div className="gap-4 p-4 flex max-w-[1300px] w-full justify-between items-center mx-auto">
-        <Link href={"/tribes"} className="text-primary-main text-lg md:text-2xl lg:text-4xl font-[700]">
+    <div
+      onClick={() => {
+        menuItem ? setMenuItem(false) : undefined;
+      }}
+      className="w-full fixed bg-black top-0 left-0"
+    >
+      <div className="gap-4 p-4 relative flex max-w-[1300px] w-full justify-between items-center mx-auto">
+        <Link
+          href={"/tribes"}
+          className="text-primary-main text-lg md:text-2xl lg:text-4xl font-[700]"
+        >
           Nchiini
         </Link>
         <div className="relative max-w-[250px] md:max-w-[300px] lg:max-w-[400px] z-20 w-full">
@@ -75,6 +84,41 @@ const NavBar = () => {
               {elem}
             </Link>
           ))}
+          <div
+            onClick={() => {
+              setMenuItem(!menuItem);
+            }}
+            className="relative"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-9 cursor-pointer h-9"
+            >
+              <path
+                fillRule="evenodd"
+                d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+                clipRule="evenodd"
+              />
+            </svg>{" "}
+            {menuItem && (
+              <div className="p-4 rounded-2xl flex flex-col gap-2 max-w-[200px] min-w-[200px] w-full absolute top-16 right-5 bg-black border border-primary-main/30">
+                <Link
+                  className="hover:bg-primary-main/5 rounded-xl p-2"
+                  href={"/profile"}
+                >
+                  Profile
+                </Link>
+                <Link
+                  className="hover:bg-primary-main/5 rounded-xl p-2"
+                  href={"/auth?q=sign-in"}
+                >
+                  log out
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
