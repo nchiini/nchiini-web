@@ -1,12 +1,9 @@
 "use client";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const Footer = () => {
-  const [path, setPath] = useState<string>();
-  useEffect(() => {
-    var url = window.location.pathname;
-    setPath(url);
-  }, []);
+  const path = usePathname();
   return path?.includes("/auth") || path?.includes("/dashboard") ? (
     <></>
   ) : (

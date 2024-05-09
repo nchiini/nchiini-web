@@ -66,7 +66,7 @@ const TribeDetails = () => {
               key={index}
               className="rounded-2xl w-full bg-white/5 cursor-pointer duration-300 hover:border-white/20 flex border border-white/10 gap-4 p-3"
             >
-              <img src="/tribes/Image1.png" className="w-[300px]" />
+              <img src="/tribes/Image1.png" className="md:w-[300px] w-[200px]" />
               <div className="w-full flex flex-col gap-3">
                 <div className="text-primary-main text-2xl">
                   Section heading

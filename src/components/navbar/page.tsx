@@ -1,16 +1,14 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const NavBar = () => {
-  const [path, setPath] = useState<string>();
   const [searchString, setSearchString] = useState<string>();
   const [mobileMenu, setMobileMenu] = useState<boolean>(false);
   const [menuItem, setMenuItem] = useState<boolean>(false);
-  useEffect(() => {
-    var url = window.location.pathname;
-    setPath(url);
-  }, []);
+  const path = usePathname()
   const menuItems = ["Home", "Contact Us", "About Us"];
   return path?.includes("/auth") || path?.includes("/dashboard") ? (
     <></>
