@@ -1,0 +1,36 @@
+{
+    "Header":{
+        "search_tribe_placeholder":"Search tribe here...",
+        "home":"Home",
+        "contact_us":"Contact Us",
+        "about_us":"About Us",
+        "french":"French",
+        "english":"English",
+        "profile":"Profile",
+        "log_out":"Log Out"
+    },"Home":{
+        "tribes":"tribes",
+        "hero_text":"Discover tribes and cultures in cameroon"
+    },"Footer":{
+        "join_us":"Join us on social media",
+        "about_us":"About Us",
+        "services":"Services",
+        "privacy_policy":"Privacy Policy",
+        "terms_and_conditions":"Terms and conditions",
+        "powered_by":"Powered by",
+        "company":"Company",
+        "contact-us":"Contact Us"
+    },"About":{
+        "mission":"Our Mission and Vision",
+        "our_team":"Our Team",
+        "in_touch":"Stay in touch with us",
+        "get_in_touch":"Get in Touch"
+    },"Profile":{
+        "my_profile":"My Profile",
+        "about_me":"About Me",
+        "my_interests":"My interests",
+        "interests":"Tribes you're interested in",
+        "goals":"My Goals",
+        "edit_profile":"Edit Profile"
+    }
+}

@@ -4,6 +4,8 @@ import "./globals.css";
 import Head from "next/head";
 import { Suspense } from "react";
 import NavBar from "../components/navbar/page";
+import Footer from "@/components/footer/page";
+import { useRouter } from "next/router";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -33,10 +35,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className + " mx-auto pt-24 w-full max-w-[1300px] p-4"}>
+      <body className={inter.className + " mx-auto pt-24 bg-primary-background w-full max-w-[1300px] p-4"}>
         <Suspense>
           <NavBar />
           {children}
+          <Footer />
         </Suspense>
       </body>
     </html>

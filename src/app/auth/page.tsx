@@ -17,7 +17,7 @@ const AuthPAge = () => {
   const screen = useSearchParams().get("q");
   const router = useRouter();
   return (
-    <div className="w-full min-h-screen top-0 left-0 p-5 flex items-center justify-center">
+    <div className="w-full min-h-screen absolute top-0 left-0 p-5 flex items-center justify-center">
       <div className="grid max-w-[400px] lg:grid-cols-2 pb-5 w-full min-h-[525px] gap-5 lg:max-w-[900px]">
         {screen == "profile" && (
           <div className="text-3xl lg:hidden">Set Up your profile</div>
