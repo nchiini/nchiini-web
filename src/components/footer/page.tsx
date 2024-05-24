@@ -1,9 +1,13 @@
 "use client";
-import { usePathname } from "next/navigation";
+import { getTranslation } from "@/utils/translation";
+import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const Footer = () => {
   const path = usePathname();
+  const language = useSearchParams().get("lang");
+  let t = getTranslation(String(language)).Footer;
   return path?.includes("/auth") || path?.includes("/dashboard") ? (
     <></>
   ) : (
@@ -12,7 +16,7 @@ const Footer = () => {
         <div className="flex flex-col gap-3">
           <div className="text-4xl font-[700] text-primary-main">Nchiini</div>
           <div>Buea, Cameroon</div>
-          <div>Join us on social media</div>
+          <div>{t.join_us}</div>
           <div className="flex gap-3">
             <img className="h-8" src={"/icons/facebook.png"} />
             <img className="h-8" src={"/icons/instagram.png"} />
@@ -20,22 +24,22 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex flex-col gap-3">
-          <div className="text-4xl font-[700] text-primary-main">Company</div>
-          <div>About us</div>
-          <div>Services</div>
-          <div>Privacy policy</div>
-          <div>Terms and conditions</div>
+          <div className="text-4xl font-[700] text-primary-main">{t.company}</div>
+          <div>{t.about_us}</div>
+          <div>{t.services}</div>
+          <div>{t.privacy_policy}</div>
+          <div>{t.terms_and_conditions}</div>
         </div>
         <div className="flex flex-col gap-3">
           <div className="text-4xl font-[700] text-primary-main">
-            Contact us
+            {t["contact-us"]}
           </div>
           <div>contact@nchiini.net</div>
-          <div>+237670000000</div>
+          <Link href={"https://wa.me/237681099238"}>+237 681099238</Link>
         </div>
       </div>
-      <div className="w-full text-center pt-4 text-white/30">
-        &copy;copyright 2024 . Powered by Nchiini
+      <div className="w-full text-center p-4 pt-16 text-white/30">
+        &copy;copyright 2024 . {t.powered_by} Nchiini
       </div>
     </div>
   );

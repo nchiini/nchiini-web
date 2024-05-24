@@ -35,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className + " mx-auto pt-24 w-full max-w-[1300px] p-4"}>
+      <body className={inter.className + " mx-auto pt-24 bg-primary-background w-full max-w-[1300px] p-4"}>
         <Suspense>
           <NavBar />
           {children}

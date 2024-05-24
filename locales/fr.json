@@ -1,0 +1,36 @@
+{
+    "Header":{
+        "search_tribe_placeholder":"Recherchez la tribu ici...",
+        "home":"Foyer",
+        "contact_us":"Contactez-nous",
+        "about_us":"À propos de nous",
+        "french":"Français",
+        "english":"Anglais",
+        "profile":"Profil",
+        "log_out":"Se déconnecter"
+    },"Home":{
+        "tribes":"tribus",
+        "hero_text":"Découvrez les tribus et les cultures au Cameroun"
+    },"Footer":{
+        "join_us":"Rejoignez-nous sur les réseaux sociaux",
+        "about_us":"À propos de nous",
+        "services":"Prestations de service",
+        "privacy_policy":"politique de confidentialité",
+        "terms_and_conditions":"Termes et conditions",
+        "powered_by":"Alimenté par",
+        "company":"Entreprise",
+        "contact-us":"Contactez-nous"
+    },"About":{
+        "mission":"Notre mission et notre vision",
+        "our_team":"Notre équipe",
+        "in_touch":"Restez en contact avec nous",
+        "get_in_touch":"Entrer en contact"
+    },"Profile":{
+        "my_profile":"Mon profil",
+        "about_me":"Sur moi",
+        "my_interests":"Mes intérêts",
+        "interests":"Tribus qui vous intéressent",
+        "goals":"Tes objectifs",
+        "edit_profile":"Editer le profil"
+    }
+}

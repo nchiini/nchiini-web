@@ -1,33 +1,48 @@
 "use client";
+import { getTranslation } from "@/utils/translation";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const NavBar = () => {
   const [searchString, setSearchString] = useState<string>();
   const [mobileMenu, setMobileMenu] = useState<boolean>(false);
-  const [menuItem, setMenuItem] = useState<boolean>(false);
-  const path = usePathname()
-  const menuItems = ["Home", "Contact Us", "About Us"];
+  const [menuItem, setMenuItem] = useState<string>("");
+  const [lang, setLang] = useState<string>("En");
+  const path = usePathname();
+  const language = useSearchParams().get("lang");
+
+  let t = getTranslation(String(language)).Header;
+  // const menuItems = [t.home, t.contact_us, t.about_us];
+  const menuItems = [
+    {
+      route: "home",
+      name: t.home,
+    },
+    {
+      route: "Contact Us",
+      name: t.contact_us,
+    },
+    {
+      route: "About Us",
+      name: t.about_us,
+    },
+  ];
+  const router = useRouter();
   return path?.includes("/auth") || path?.includes("/dashboard") ? (
     <></>
   ) : (
-    <div
-      onClick={() => {
-        menuItem ? setMenuItem(false) : undefined;
-      }}
-      className="w-full fixed bg-black top-0 left-0"
-    >
+    <div className="w-full fixed z-10 bg-primary-background top-0 left-0">
       <div className="gap-4 p-4 relative flex max-w-[1300px] w-full justify-between items-center mx-auto">
         <Link
-          href={"/tribes"}
+          href={"/"}
           className="text-primary-main text-lg md:text-2xl lg:text-4xl font-[700]"
         >
           Nchiini
         </Link>
         <div className="relative max-w-[250px] md:max-w-[300px] lg:max-w-[400px] z-20 w-full">
-          <div className="flex items-center z-20 w-full gap-3 relative max-w-[250px] md:max-w-[300px] lg:max-w-[400px] rounded-xl">
+          <form className="flex items-center z-20 w-full gap-3 relative max-w-[250px] md:max-w-[300px] lg:max-w-[400px] rounded-xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -46,12 +61,13 @@ const NavBar = () => {
             <input
               className=" outline-none pl-0 placeholder:text-white/50 p-3 w-full text-xs"
               type="text"
+              name="text"
               onChange={(e) => {
                 setSearchString(e.target.value);
               }}
-              placeholder="Search tribe here..."
+              placeholder={t.search_tribe_placeholder}
             />
-          </div>
+          </form>
           {searchString && (
             <div className="w-full absolute z-20 bg-grey-1/60 border border-t-0 rounded-b-xl border-primary-main/20 backdrop-blur-lg overflow-scroll h-[260px] top-[40px]">
               <div className="p-3 cursor-pointer hover:bg-white/5">Oku</div>
@@ -70,29 +86,87 @@ const NavBar = () => {
         <div className="md:flex items-center hidden gap-10">
           {menuItems.map((elem, index) => (
             <Link
-              href={`/${elem.toLowerCase().split(" ")[0]}`}
+              title={elem.name}
+              href={`/${
+                elem.route.toLowerCase().split(" ")[0] == "home"
+                  ? ""
+                  : elem.route.toLowerCase().split(" ")[0]
+              }?lang=${language ? language : "en"}`}
               className={`${
-                path?.includes(elem.toLowerCase().split(" ")[0]) ||
-                (path == "/tribes" && elem.toLowerCase() == "home")
+                path?.includes(elem.route.toLowerCase().split(" ")[0]) ||
+                (path == "/" && elem.route.toLowerCase() == "home")
                   ? "text-primary-main border-b-2 border-b-primary-main"
                   : "border-b-2 border-b-transparent"
               } lg:text-base text-xs`}
               key={index}
             >
-              {elem}
+              {elem.name}
             </Link>
           ))}
           <div
             onClick={() => {
-              setMenuItem(!menuItem);
+              menuItem ? setMenuItem("") : setMenuItem("language");
             }}
-            className="relative"
+            title="language"
+            className="relative flex items-center cursor-pointer bg-white/5 hover:bg-white/10 duration-300 rounded-lg p-1 gap-4"
+          >
+            {" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6 p-1 bg-white/5 rounded hover:bg-white/10 duration-300"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802"
+              />
+            </svg>
+            <div className=" p-1 rounded w-7 h-7 flex items-center justify-center">
+              {lang}
+            </div>
+            {menuItem == "language" && (
+              <div className="p-2 rounded-2xl flex flex-col gap-2 max-w-[200px] min-w-[200px] w-full absolute top-12 right-5 bg-black border border-primary-main/30">
+                <button
+                  onClick={() => {
+                    router.push(`${path}?lang=en`);
+                    setMenuItem("");
+                    setLang("En");
+                  }}
+                  className="hover:bg-white/5 text-left flex justify-between rounded-xl p-3"
+                >
+                  {t.english}
+                  <div className="text-primary-main/60">En</div>
+                </button>
+                <button
+                  onClick={() => {
+                    router.push(`${path}?lang=fr`);
+                    setMenuItem("");
+                    setLang("Fr");
+                  }}
+                  className="hover:bg-white/5 text-left flex justify-between rounded-xl p-3"
+                >
+                  {t.french}
+                  <div className="text-primary-main/60">Fr</div>
+                </button>
+              </div>
+            )}
+          </div>
+          <div
+            title={t.profile}
+            onClick={() => {
+              menuItem ? setMenuItem("") : setMenuItem("menu");
+            }}
+            className="relative flex items-center gap-4"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-9 cursor-pointer h-9"
+              className="w-7 cursor-pointer h-7"
             >
               <path
                 fillRule="evenodd"
@@ -100,24 +174,25 @@ const NavBar = () => {
                 clipRule="evenodd"
               />
             </svg>{" "}
-            {menuItem && (
-              <div className="p-4 rounded-2xl flex flex-col gap-2 max-w-[200px] min-w-[200px] w-full absolute top-16 right-5 bg-black border border-primary-main/30">
+            {menuItem == "menu" && (
+              <div className="p-2 rounded-2xl flex flex-col gap-2 max-w-[200px] min-w-[200px] w-full absolute top-12 right-5 bg-black border border-primary-main/30">
                 <Link
-                  className="hover:bg-primary-main/5 rounded-xl p-2"
-                  href={"/profile"}
+                  className="hover:bg-white/5 rounded-xl p-3"
+                  href={`/profile?lang=${language}`}
                 >
-                  Profile
+                  {t.profile}
                 </Link>
                 <Link
-                  className="hover:bg-primary-main/5 rounded-xl p-2"
-                  href={"/auth?q=sign-in"}
+                  className="hover:bg-white/5 rounded-xl p-3"
+                  href={`/auth?q=sign-in&lang=${language}`}
                 >
-                  log out
+                  {t.log_out}
                 </Link>
               </div>
             )}
           </div>
         </div>
+
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -140,19 +215,21 @@ const NavBar = () => {
         <div className="fixed z-50 flex flex-col gap-6 top-[60px] py-14 left-0 h-full bg-black p-4 w-full">
           {menuItems.map((elem, index) => (
             <Link
-              href={`/${elem.toLowerCase().split(" ")[0]}`}
+              href={`/${elem.route.toLowerCase().split(" ")[0]}?lang=${
+                language ? language : "en"
+              }`}
               onClick={() => {
                 setMobileMenu(!mobileMenu);
               }}
               className={`${
-                path?.includes(elem.toLowerCase().split(" ")[0]) ||
-                (path == "/tribes" && elem.toLowerCase() == "home")
+                path?.includes(elem.route.toLowerCase().split(" ")[0]) ||
+                (path == "/tribes" && elem.route.toLowerCase() == "home")
                   ? "text-primary-main"
                   : ""
               } lg:text-base text-xs`}
               key={index}
             >
-              {elem}
+              {elem.name}
             </Link>
           ))}
         </div>

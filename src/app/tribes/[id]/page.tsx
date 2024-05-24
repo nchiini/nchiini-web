@@ -1,4 +1,5 @@
 "use client";
+import { Coming, Origin } from "@/screens";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
@@ -49,7 +50,7 @@ const TribeDetails = () => {
               key={index}
               className={
                 tab == elem
-                  ? "rounded-full border-primary-main bg-primary-main text-white border px-6 py-2"
+                  ? "rounded-full border-primary-main bg-primary-main text-black border px-6 py-2"
                   : `rounded-full border-white/30 text-white/40 border px-6 py-2`
               }
             >
@@ -58,39 +59,41 @@ const TribeDetails = () => {
           );
         })}
       </div>
-      <div className="w-full flex flex-col pb-14 gap-4">
-        {Array(6)
-          .fill(1)
-          .map((elem, index) => (
-            <div
-              key={index}
-              className="rounded-2xl w-full bg-white/5 cursor-pointer duration-300 hover:border-white/20 flex border border-white/10 gap-4 p-3"
-            >
-              <img src="/tribes/Image1.png" className="md:w-[300px] w-[200px]" />
-              <div className="w-full flex flex-col gap-3">
-                <div className="text-primary-main text-2xl">
-                  Section heading
+      {tab?.toLowerCase() == "origin" && <Origin />}
+      {tab?.toLowerCase() == "dance" && <Coming />}
+      {tab?.toLowerCase().split(" ")[0] == "traditional" && <Coming />}
+      {tab?.toLowerCase().split(" ")[0] == "cultural" && <Coming />}
+      {tab?.toLowerCase() == "food" && (
+        <div className="w-full grid grid-cols-2 flex-col pb-14 gap-5">
+          {Array(6)
+            .fill(1)
+            .map((elem, index) => (
+              <div
+                key={index}
+                className="rounded-2xl w-full bg-white/5 cursor-pointer duration-300 hover:border-white/20 flex flex-col md:flex-row border border-white/10 gap-4 p-2 md:p-3"
+              >
+                <img
+                  src="/tribes/Image1.png"
+                  className="md:w-[200px] lg:w-[250px] xl:w-[300px] object-cover w-full"
+                />
+                <div className="w-full flex flex-col gap-3">
+                  <div className="text-primary-main text-xl md:text-2xl">
+                    Section heading
+                  </div>
+                  <div className="line-clamp-5 text-[12px] lg:text-[16px] text-white/50">
+                    Thi adjaksd a sdfdf lakjdf aldskfj dsfkajds f asdfkja sdf
+                    sdf s sadfa da s Thi adjaksd a sdfdf lakjdf aldskfj dsfkajds
+                    f asdfkja sdf sdf s sadfa da s Thi adjaksd a sdfdf lakjdf
+                    aldskfj dsfkajds f asdfkja sdf sdf s sadfa da s Thi adjaksd
+                    a sdfdf lakjdf aldskfj dsfkajds f asdfkja sdf sdf s sadfa da
+                    s Thi adjaksd a sdfdf lakjdf aldskfj dsfkajds f asdfkja sdf
+                    sdf
+                  </div>
                 </div>
-                <div className="line-clamp-4 text-white/50">
-                  Thi adjaksd a sdfdf lakjdf aldskfj dsfkajds f asdfkja sdf sdf
-                  s sadfa da s Thi adjaksd a sdfdf lakjdf aldskfj dsfkajds f
-                  asdfkja sdf sdf s sadfa da s Thi adjaksd a sdfdf lakjdf
-                  aldskfj dsfkajds f asdfkja sdf sdf s sadfa da s Thi adjaksd a
-                  sdfdf lakjdf aldskfj dsfkajds f asdfkja sdf sdf s sadfa da s
-                  Thi adjaksd a sdfdf lakjdf aldskfj dsfkajds f asdfkja sdf sdf
-                  s sadfa da s Thi adjaksd a sdfdf lakjdf aldskfj dsfkajds f
-                  asdfkja sdf sdf s sadfa da s Thi adjaksd a sdfdf lakjdf
-                  aldskfj dsfkajds f asdfkja sdf sdf s sadfa da s Thi adjaksd a
-                  sdfdf lakjdf aldskfj dsfkajds f asdfkja sdf sdf s sadfa da s
-                  Thi adjaksd a sdfdf lakjdf aldskfj dsfkajds f asdfkja sdf sdf
-                  s sadfa da s Thi adjaksd a sdfdf lakjdf aldskfj dsfkajds f
-                  asdfkja sdf sdf s sadfa da s{" "}
-                </div>
-                <Link href={"/"}>See more</Link>
               </div>
-            </div>
-          ))}
-      </div>
+            ))}
+        </div>
+      )}
     </div>
   );
 };

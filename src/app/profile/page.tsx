@@ -1,6 +1,8 @@
 "use client";
-import Link from "next/link";
+import NormalButton from "@/components/button/NormalButton";
+import { getTranslation } from "@/utils/translation";
 import { useSearchParams } from "next/navigation";
+import { Dispatch, SetStateAction, useState } from "react";
 
 const { tribes } = require("../../../tribes.js");
 const TribeDetails = () => {
@@ -11,28 +13,67 @@ const TribeDetails = () => {
     "Traditional rights",
     "Cultural heritage",
   ];
-  const tab = useSearchParams().get("tab");
-  return (
-    <div>
-      <div className="md:text-3xl cursor-pointer text-xl gap-4 flex items-center font-[600]">
+  const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
+  const tribes = ["Oku", "Nkambe", "Kom"];
+  const goals = [
+    "Research",
+    "Travel",
+    "To Teach",
+    "Business",
+    "Marriage",
+    "Awareness",
+    "Others",
+  ];
+  const Item = ({
+    text,
+    list = [],
+    setSelectedGoals,
+  }: {
+    text: string;
+    list?: string[];
+    setSelectedGoals: Dispatch<SetStateAction<string[]>>;
+  }) => {
+    
+  
+    return (
+      <div
+        onClick={() => {
+          if (list?.includes(text)) {
+          } else {
+            setSelectedGoals([...list, text]);
+          }
+        }}
+        className={`${
+          list?.includes(text) ? "!border-primary-main border" : ""
+        } rounded-full p-2 px-4 text-[10px] cursor-pointer gap-3 flex items-center justify-between hover:bg-white/20 duration-200 border border-transparent bg-white/10`}
+      >
+        {text}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth={1.5}
+          strokeWidth={2}
           stroke="currentColor"
-          className="w-9 h-9"
+          className="w-6 rounded-full p-1 duration-300 hover:bg-white/10 h-6 text-primary-main"
         >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
+            d="M6 18 18 6M6 6l12 12"
           />
         </svg>
-        My Profile
       </div>
-      <div className="w-full p-10 rounded-xl bg-white/5 flex gap-6 my-10">
-        <div className="p-10 rounded-xl bg-gradient-to-b to-transparent from-primary-main/5 flex flex-col gap-10 max-w-[400px] w-full">
+    );
+  };
+  const tab = useSearchParams().get("lang");
+  let t = getTranslation(String(tab)).Profile;
+  return (
+    <div className="mb-32">
+      <div className="md:text-4xl cursor-pointer text-xl gap-4 flex items-center font-[700]">
+       {t.my_profile}
+      </div>
+      <div className="w-full rounded-xl flex gap-6 my-10">
+        <div className="p-6 rounded-xl bg-grey-2 border border-white/10 flex flex-col gap-5 max-w-[400px] w-full">
           <div className="h-[150px] w-[150px] rounded-3xl mx-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -51,23 +92,18 @@ const TribeDetails = () => {
             <div className="text-2xl font-bold">Akoneh Silas Magho</div>
             <div className="text-xl text-white/50">+237681099238</div>
           </div>
-          <div className="w-full max-w-[350px] mx-auto rounded-xl bg-white/10 p-5">
-            <div className="text-2xl">About</div>
-            <div className="text-white/50 line-clamp-5">
+          <div className="w-full border border-white/10 rounded-xl mx-auto rounded-xl bg-white/5 p-5">
+            <div className="text-2xl">{t.about_me}</div>
+            <div className="text-white/20">
               I am a creative mind on a journey through the realms of
               imagination, weaving words into captivating tapestries of thought.
-              With a passion for storytelling and a love for the written word, I
-              embrace the uncharted territories of the mind, seeking to inspire,
-              entertain, and provoke thought. My pen dances across the page,
-              giving life to characters, places, and ideas that spring forth
-              from the depths of my imagination. Join me on this adventure as we
-              explore the boundless possibilities of storytelling together.
             </div>
           </div>
+          <NormalButton text={t.edit_profile} className="text-black" />
         </div>
-        <div className="flex w-full flex-col gap-3">
-          <div className="flex items-center text-2xl justify-between">
-            Summary of me
+        <div className="flex flex-col w-full gap-3">
+          <div className="flex w-full items-center text-4xl font-bold justify-between">
+            {t.my_interests}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -82,6 +118,37 @@ const TribeDetails = () => {
                 d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
               />
             </svg>
+          </div>
+          <div className="text-white/60">
+            I am a creative mind on a journey through the realms of imagination,
+            weaving words into captivating tapestries of thought. With a passion
+            for storytelling and a love for the written word, I embrace the
+            uncharted territories of the mind, seeking to inspire, entertain,
+            and provoke thought. My pen dances across the page, giving life to
+            characters, places, and ideas that spring forth from the depths of
+            my imagination.
+          </div>
+          <div>{t.interests}</div>
+          <div className="flex gap-2 flex-wrap w-full">
+            {tribes.map((elem, index) => (
+              <Item
+                setSelectedGoals={setSelectedGoals}
+                list={selectedGoals}
+                text={elem}
+                key={index}
+              />
+            ))}
+          </div>
+          <div>{t.goals}</div>
+          <div className="flex gap-2 flex-wrap w-full">
+            {goals.map((elem, index) => (
+              <Item
+                setSelectedGoals={setSelectedGoals}
+                list={selectedGoals}
+                text={elem}
+                key={index}
+              />
+            ))}
           </div>
         </div>
       </div>
