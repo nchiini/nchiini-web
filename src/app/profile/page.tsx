@@ -33,8 +33,6 @@ const TribeDetails = () => {
     list?: string[];
     setSelectedGoals: Dispatch<SetStateAction<string[]>>;
   }) => {
-    
-  
     return (
       <div
         onClick={() => {
@@ -70,7 +68,7 @@ const TribeDetails = () => {
   return (
     <div className="mb-32">
       <div className="md:text-4xl cursor-pointer text-xl gap-4 flex items-center font-[700]">
-       {t.my_profile}
+        {t.my_profile}
       </div>
       <div className="w-full rounded-xl flex gap-6 my-10">
         <div className="p-6 rounded-xl bg-grey-2 border border-white/10 flex flex-col gap-5 max-w-[400px] w-full">

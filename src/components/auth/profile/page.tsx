@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 
 const Profile = () => {
   const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
-  const [tribes, setTribes] = useState<string[]>(["Research", "Travel"]);
+  const [tribes, setTribes] = useState<string[]>(["Oku", "Kom"]);
   const goals = [
     "Research",
     "Travel",

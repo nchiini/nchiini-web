@@ -18,51 +18,51 @@ const TribeDetails = () => {
         {t.mission}
       </div>
       <div className="text-white/50">
-        The Bayangi people have cultivated a cultural pattern deeply rooted in
-        history. Their origins can be traced back to the expansive Kanem Borno
-        Empire, connecting them to a heritage that stretches from Chad to
-        Nigeria where many other Bantu languages are also spoken. The Bayangi
-        people have cultivated a cultural pattern deeply rooted in
-        history. Their origins can be traced back to the expansive Kanem Borno
-        Empire, connecting them to a heritage that stretches from Chad to
-        Nigeria where many other Bantu languages are also spoken.The Bayangi
-        people have cultivated a cultural pattern deeply rooted in
-        history. Their origins can be traced back to the expansive Kanem Borno
-        Empire, connecting them to a heritage that stretches from Chad to
-        Nigeria where many other Bantu languages are also spoken.back to the
-        expansive Kanem Borno Empire, connecting them to a heritage that
-        stretches from Chad to Nigeria where many other Bantu languages are also
-        spoken.The Bayangi people have cultivated a cultural pattern deeply
+        We aim at connecting people to their roots; allowing our users to learn
+        about their tribes and other tribes in Cameroon. By so doing we preserve
+        our respective cultures and traditions ensuring that it lives on. We
+        also aim at providing a way for users to learn skills tied to their
+        culture such as speaking the dialect, learning how to dance
+        traditionally, how to cook the traditional meal e.t.c.
       </div>
       <div className="md:text-4xl cursor-pointer text-xl gap-4 font-[700]">
         {t.our_team}
       </div>
-      <div className="grid md:grid-cols-3 grid-cols-2 lg:grid-cols-4 gap-10 w-full">
-        <div title="Vanisiah Ebai" className="rounded-2xl bg-white/5 overflow-hidden w-full h-[550px] relative">
+      <div className="grid md:grid-cols-3 grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-10 w-full">
+        <div
+          title="Akoneh Silas M."
+          className="rounded-2xl bg-white/5 overflow-hidden w-full h-[550px] relative"
+        >
           <img
             src="/tribes/Image1.png"
             className="w-full h-full object-cover"
           />
           <div className="absolute bottom-0 left-0 w-full h-[70%] from-60% bg-gradient-to-t flex items-center justify-center from-black to-transparent">
             <div className=" rotate-[270deg] flex flex-col gap-2 -mb-24">
-              <div className="font-bold text-2xl">Vanisiah Ebai</div>
-              <div>Product Manager</div>
+              <div className="font-bold text-2xl">Akoneh Silas M.</div>
+              <div>Developer/CoFounder</div>
             </div>
           </div>
         </div>
-        <div title="Vanisiah Ebai" className="rounded-2xl bg-white/5 overflow-hidden w-full h-[550px] relative">
+        <div
+          title="Chu Edwin"
+          className="rounded-2xl bg-white/5 overflow-hidden w-full h-[550px] relative"
+        >
           <img
             src="/tribes/Image2.png"
             className="w-full h-full object-cover"
           />
           <div className="absolute bottom-0 left-0 w-full h-[70%] from-60% bg-gradient-to-t flex items-center justify-center from-black to-transparent">
             <div className=" rotate-[270deg] flex flex-col gap-2 -mb-24">
-              <div className="font-bold text-2xl">Vanisiah Ebai</div>
-              <div>Product Manager</div>
+              <div className="font-bold text-2xl">Chu Edwin</div>
+              <div>Developer/Founder</div>
             </div>
           </div>
         </div>
-        <div title="Vanisiah Ebai" className="rounded-2xl bg-white/5 overflow-hidden w-full h-[550px] relative">
+        <div
+          title="Vanisiah Ebai"
+          className="rounded-2xl bg-white/5 overflow-hidden w-full h-[550px] relative"
+        >
           <img
             src="/tribes/Image3.png"
             className="w-full h-full object-cover"
@@ -74,15 +74,18 @@ const TribeDetails = () => {
             </div>
           </div>
         </div>
-        <div title="Vanisiah Ebai" className="rounded-2xl bg-white/5 overflow-hidden w-full h-[550px] relative">
+        <div
+          title="Asonganyi Rouclec"
+          className="rounded-2xl bg-white/5 overflow-hidden w-full h-[550px] relative"
+        >
           <img
             src="/tribes/Image4.png"
             className="w-full h-full object-cover"
           />
           <div className="absolute bottom-0 left-0 w-full h-[70%] from-60% bg-gradient-to-t flex items-center justify-center from-black to-transparent">
             <div className=" rotate-[270deg] flex flex-col gap-2 -mb-24">
-              <div className="font-bold text-2xl">Vanisiah Ebai</div>
-              <div>Product Manager</div>
+              <div className="font-bold text-2xl">Asonganyi Rouclec</div>
+              <div>Developer/CoFounder</div>
             </div>
           </div>
         </div>
@@ -129,8 +132,18 @@ const TribeDetails = () => {
           First Trust building Greate Soppo Buea
         </div>
         <form className="bg-white flex rounded-xl overflow-hidden">
-          <input type="email" name="email" className="p-4 w-full max-w-[250px] outline-none text-black" placeholder="example@email.eg" />
-          <button title={t.get_in_touch} className="bg-primary-main w-[200px] h-full p-4 hover:bg-black hover:text-white">{t.get_in_touch}</button>
+          <input
+            type="email"
+            name="email"
+            className="p-4 w-full max-w-[250px] outline-none text-black"
+            placeholder="example@email.eg"
+          />
+          <button
+            title={t.get_in_touch}
+            className="bg-primary-main w-[200px] h-full p-4 duration-200 hover:bg-black hover:text-white"
+          >
+            {t.get_in_touch}
+          </button>
         </form>
       </div>
     </div>
